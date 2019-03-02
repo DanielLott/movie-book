@@ -6,9 +6,7 @@ var db = require("./models");
 var passport = require("./config/passport");
 var app = express();
 var PORT = process.env.PORT || 8080;
-var db = require("./models");
 // Middleware
-var app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
