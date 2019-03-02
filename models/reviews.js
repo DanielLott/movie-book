@@ -1,17 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
     var Reviews = sequelize.define("Reviews", {
-      Author: {
+      
+      User_Name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1,20]
-        }
-      },
-      User_id: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1,20]
+          len: [1,40]
         }
       },
       Review: {
@@ -29,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
-        Reviews.belongsTo(models.Movies, {
+        Reviews.Review.belongsTo(models.Movies, {
             foreignKey: {
                 allowNull: false
             }

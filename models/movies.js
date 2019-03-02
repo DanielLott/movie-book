@@ -14,10 +14,12 @@ module.exports = function(sequelize, DataTypes) {
           len: [1,10]
         }
       },
-      Seen: {
-        type: DataTypes.BOOLEAN,
+      URL: {
+        type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: false
+        validate: {
+          len: [1,255]
+        }
       }
     });
 
@@ -25,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
         Movies.hasMany(models.Reviews, {
             onDelete: "cascade"
         });
-        Movies.belongsTo(models.User.User_Name, {
+        Movies.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
