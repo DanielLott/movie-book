@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
-        Reviews.Review.belongsTo(models.Movies, {
+        Reviews.belongsTo(models.Movies, {
             foreignKey: {
                 allowNull: false
             }
