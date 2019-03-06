@@ -18,14 +18,14 @@ $(document).ready(function() {
   
       // If we have a user name and password we run the loginUser function and clear the form
       loginUser(userData.User_Name, userData.password);
-      UserNameInput.val("");
+      User_NameInput.val("");
       passwordInput.val("");
     });
   
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
     function loginUser(User_Name, password) {
       $.post("/api/login", {
-        UserName: User_Name,
+        User_Name: User_Name,
         password: password
       }).then(function(data) {
         window.location.replace(data);

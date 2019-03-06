@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Reviews = sequelize.define("Reviews", {
+    var Review = sequelize.define("Review", {
       
       User_Name: {
         type: DataTypes.STRING,
@@ -9,27 +9,27 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       Review: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
             len: [1,255]
           }
-        },
+        }
     });
 
-    Reviews.associate = function(models) {
-        Reviews.belongsTo(models.User, {
+    Review.associate = function(models) {
+        Review.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
-        Reviews.belongsTo(models.Movies, {
+        Review.belongsTo(models.Movie, {
             foreignKey: {
                 allowNull: false
             }
         });
-    } 
+    }; 
 
-    return Reviews;
+    return Review;
   };
   

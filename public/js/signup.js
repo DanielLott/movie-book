@@ -4,7 +4,7 @@ $(document).ready(function() {
     var User_NameInput = $("input#User-input");
     var passwordInput = $("input#password-input");
   
-    // When the signup button is clicked, we validate the email and password are not blank
+    // When the signup button is clicked, we validate the user name and password are not blank
     signUpForm.on("submit", function(event) {
       event.preventDefault();
       var userData = {
@@ -15,7 +15,7 @@ $(document).ready(function() {
       if (!userData.User_Name || !userData.password) {
         return;
       }
-      // If we have an email and password, run the signUpUser function
+      // If we have a user name and password, run the signUpUser function
       signUpUser(userData.User_Name, userData.password);
       User_NameInput.val("");
       passwordInput.val("");

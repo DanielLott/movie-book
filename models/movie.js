@@ -1,21 +1,21 @@
 module.exports = function(sequelize, DataTypes) {
-    var Movies = sequelize.define("Movies", {
+    var Movie = sequelize.define("Movie", {
       Movie_Title: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1,40]
+          len: [1,255]
         }
       },
       genre: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1,10]
+          len: [1,255]
         }
       },
       URL: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           len: [1,255]
@@ -23,16 +23,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
 
-    Movies.associate = function(models) {
-        Movies.hasMany(models.Reviews, {
+    Movie.associate = function(models) {
+        Movie.belongsTo(models.Review, {
             onDelete: "cascade"
         });
-        Movies.belongsTo(models.User, {
+        Movie.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
     }
-    return Movies;
+    return Movie;
   };
-  
