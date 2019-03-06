@@ -16,7 +16,7 @@ function runEventQuery(queryTerm) {
         method: "GET"
     }).then(function (response) {
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 5; i++) {
             let movies = response.results[i]
             let moviePoster = "http://image.tmdb.org/t/p/w185/" + movies.poster_path
             let movieTitle = movies.title
