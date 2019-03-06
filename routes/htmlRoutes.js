@@ -6,25 +6,13 @@ var db = require("../models");
 module.exports = function (app) {
 
   app.get("/", function (req, res) {
-      db.Example.findAll({}).then(function (dbExamples) {
-      res.render("index", {
-        examples: dbExamples
-      });
-    });
+    res.sendFile(path.join(__dirname, "../public/home.html"));
   });
-  app.get("/user", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.render("userHome", {
-        examples: dbExamples
-      });
-    });
+  app.get("/login", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
   });
-  app.get("/movies", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.render("movies", {
-        examples: dbExamples
-      });
-    });
+  app.get("/signup", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
