@@ -6,6 +6,8 @@ var resultsContainer;
 $(document).ready(function () {
 let resultsContainer = $(".resultsContainer");
 
+
+
 function runEventQuery(queryTerm) {
     var queryURL = "https://api.themoviedb.org/3/movie/550?api_key=" + authKey;
     var queryURL2 = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + authKey + "&release_date.gte=2019-01-20&release_date.lte=2019-04-01&language=en-US&page=1";
@@ -27,7 +29,10 @@ function runEventQuery(queryTerm) {
 
             let card = $("<div>", { class: "movie-card"}),
                 cardImg = $("<img>", { class: "movie-image", src: moviePoster }),
-                cardContent = $("<div>", { class: "card-body" });
+                cardContent = $("<div class='description'>", { class: "card-body" });
+
+                //$(".description").text($(this).text().substr(0, 50)+'...');
+
 
                 cardContent.append(description)
                 card.append(cardImg); 
