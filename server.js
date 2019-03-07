@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8082;
+var PORT = process.env.port || 8082;
 var db = require("./models");
 
 // create application/json parser
