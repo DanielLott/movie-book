@@ -14,7 +14,7 @@ var basename = path.basename(module.filename);
 
 var db = {};
 
-var sequelize = new Sequelize(processs.env.JAWSDB_URL);
+var sequelize = new Sequelize(process.env.JAWSDB_URL);
 
 
 // if (config.use_env_variable) {
