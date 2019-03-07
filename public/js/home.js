@@ -34,7 +34,7 @@ function runEventQuery(queryTerm) {
                 //$(".description").text($(this).text().substr(0, 50)+'...');
 
 
-                cardContent.append(description)
+               // cardContent.append(description)
                 card.append(cardImg); 
                 card.append(cardContent)
                 resultsContainer.append(card);
