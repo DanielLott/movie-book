@@ -3,7 +3,7 @@
 var bcrypt = require("bcrypt-nodejs");
 // Creating our Fanatic model
 module.exports = function (sequelize, DataTypes) {
-    var Fanatic = sequelize.define("Fanatic", {
+    const Fanatic = sequelize.define("Fanatic", {
         // The name cannot be null, and must be a proper name before creation
         name: {
             type: DataTypes.STRING,
