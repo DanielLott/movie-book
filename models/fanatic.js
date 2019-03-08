@@ -19,6 +19,16 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
+
+    Fanatic.associate = function(models) {
+        // Associating Fanatic with Posts
+        // When an Fanatic is deleted, also delete any associated Posts
+        Fanatic.hasMany(models.Movie, {
+          onDelete: "cascade",
+          as: 'seen'
+        });
+      };
+
     // Creating a custom method for our Fanatic model. This will check if an unhashed password entered by the fanatic can be compared to the hashed password stored in our database
     Fanatic.prototype.validPassword = function (password) {
         return bcrypt.compareSync(password, this.password);
