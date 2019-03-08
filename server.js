@@ -1,37 +1,41 @@
-require("dotenv").config();
+// Requiring necessary npm packages
 var express = require("express");
+var session = require("express-session");
+var bodyParser = require('body-parser');
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 
+// Setting up port and requiring models for syncing
+var PORT = process.env.PORT || 8082;
 var db = require("./models");
 
+// create application/json parser
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// Creating express app and configuring middleware needed for authentication
 var app = express();
-var PORT = process.env.PORT || 3000;
-
-// Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 app.use(express.static("public"));
+app.use(urlencodedParser);
+app.use(jsonParser);
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
 
-var syncOptions = { force: false };
+// We need to use sessions to keep track of our fanatic's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
+// Requiring our routes
+require("./routes/html-routes.js")(app, jsonParser, urlencodedParser);
+require("./routes/api-routes.js")(app, jsonParser, urlencodedParser);
 
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
+// Syncing our database and logging a message to the console upon success
+db.sequelize.sync().then(function () {
+    app.listen(PORT, function () {
+        console.log("==>   Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+    });
 });
-
-module.exports = app;

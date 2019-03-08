@@ -1,24 +1,35 @@
 {
-  "name": "movie-book",
-  "version": "1.0.0",
-  "description": "place for movie database",
-  "main": "server.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon server.js"
-  },
-  "dependencies": {
-    "dotenv": "*",
-    "express": "*",
-    "express-handlebars": "*",
-    "mysql2": "*",
-    "sequelize": "*",
-    "bcrypt-nodejs": "*",
-    "express-session": "*",
-    "passport": "*",
-    "passport-local": "*"
-  }
+    "name": "film_fanatic",
+    "version": "1.0.0",
+    "description": "movie reviews, logging, and movies you want to see",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DanielLott/movie-book.git"
+    },
+    "bugs": {
+        "url": "https://github.com/DanielLott/movie-book/issues"
+    },
+    "homepage": "https://github.com/DanielLott/movie-book#readme",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "watch": "nodemon server.js"
+    },
+    "keywords": [
+        "movie",
+        "movies"
+    ],
+    "author": "Carlos, Dan, Dylan, Rodnee",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt-nodejs": "*",
+        "body-parser": "*",
+        "express": "*",
+        "express-session": "*",
+        "mysql2": "*",
+        "passport": "*",
+        "passport-local": "*",
+        "sequelize": "*"
+    }
 }
