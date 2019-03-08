@@ -10,7 +10,8 @@ module.exports = function(app, jsonParser, urlencodedParser) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the home page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/home");
+    console.log(req.user.id);
+    res.json("/home/" + req.user.id);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -47,11 +48,12 @@ module.exports = function(app, jsonParser, urlencodedParser) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         name: req.user.name
-        // ,id: req.user.id
+        ,id: req.user.id
       });
     }
   });
 
+  // Route for adding movie to seen
 
 
 };
