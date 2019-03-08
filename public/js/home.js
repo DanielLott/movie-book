@@ -18,7 +18,7 @@ function runEventQuery(queryTerm) {
         method: "GET"
     }).then(function (response) {
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 12; i++) {
             let movies = response.results[i]
             let moviePoster = "http://image.tmdb.org/t/p/w185/" + movies.poster_path
             let movieTitle = movies.title
@@ -32,7 +32,6 @@ function runEventQuery(queryTerm) {
                 cardContent = $("<div class='description'>", { class: "card-body" });
 
                 //$(".description").text($(this).text().substr(0, 50)+'...');
-
 
                 cardContent.append(description)
                 card.append(cardImg); 
@@ -49,5 +48,13 @@ function runEventQuery(queryTerm) {
         }
         });
 };
+
+$('#search').on('click', function (event) {
+    event.preventDefault();
+    let term = $('#userInput').val().trim();
+    console.log(term);
+});
+
+
 runEventQuery();
 });

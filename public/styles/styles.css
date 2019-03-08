@@ -68,6 +68,22 @@ a:hover {
     display: inline-block;
 }
 
+
+.flip {
+    height: 199px;
+    width: 300px;
+    margin: 0 auto;
+}
+.flip img {
+    width: 300px;
+    height: auto;
+}
+.flip .back {
+    background: #2184cd;
+    color: #fff;
+    text-align: center;
+}
+
 .movie-header {
     padding: 0;
     margin: 0;
