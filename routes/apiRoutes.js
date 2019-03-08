@@ -17,7 +17,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
-    db.User_Name.create({
+    db.User.create({
       User_Name: req.body.User_Name,
       password: req.body.password
     }).then(function() {
@@ -37,7 +37,7 @@ module.exports = function(app) {
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
-    if (!req.user) {
+    if (!req.User_Name) {
       // The user is not logged in, send back an empty object
       res.json({});
     }

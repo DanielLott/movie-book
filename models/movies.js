@@ -25,7 +25,10 @@ module.exports = function(sequelize, DataTypes) {
 
     Movies.associate = function(models) {
         Movies.hasMany(models.Reviews, {
-            onDelete: "cascade"
+          foreignKey: {
+            allowNull: false,
+            
+          }
         });
         Movies.belongsTo(models.User, {
             foreignKey: {

@@ -4,17 +4,14 @@ CREATE DATABASE exampledb;
 DROP DATABASE IF EXISTS testdb;
 CREATE DATABASE testdb;
 
-DROP DATABASE IF EXISTS moviebook_db
-CREATE DATABASE moviebook_db;
-USE moviebook_db;
+DROP DATABASE IF EXISTS moviebook
+CREATE DATABASE moviebook;
+USE moviebook;
 
 CREATE TABLE users (
     id integer(10) not null auto_increment,
-    first_name varchar(100) not null,
-    last_name varchar(100) not null,
-    email varchar(100) not null,
+    User_Name varchar(100) not null,
     password varchar(40),
-    join_date datetime,
     primary key (id)
 );
 
