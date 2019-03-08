@@ -4,6 +4,11 @@ var authKey = '6ea54ebb5a72237bb912260532bd86c7';
 var resultsContainer;
 
 $(document).ready(function () {
+    $.get("/api/user_data").then(function(data) {
+        $("#user").append(data.User_Name);
+      });
+
+$(document).ready(function () {
     let resultsContainer = $(".resultsContainer");
 
 
@@ -58,3 +63,5 @@ $(document).ready(function () {
     };
     runEventQuery();
 });
+});
+
