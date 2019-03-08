@@ -14,14 +14,6 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/login.html"));
     });
 
-    app.get("/", function (req, res) {
-        // If the user already has an account send them to the home page
-        if (req.user) {
-            res.redirect("/home");
-        }
-        res.sendFile(path.join(__dirname, "../public/login.html"));
-    });
-
     app.get("/signup", function (req, res) {
         // If the user already has an account send them to the home page
         if (req.user) {
@@ -37,6 +29,9 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/home.html"));
     });
 
+    app.get("/add", isAuthenticated, function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/add.html"));
+    });
     // app.get("*", function (req, res) {
     //     // If the user already has an account send them to the home page
     //     if (req.user) {
