@@ -1,24 +1,25 @@
+// Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function(app, jsonParser, urlencodedParser) {
   // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
+  // If the user has valid login credentials, send them to the home page.
   // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.post("/api/login", urlencodedParser, passport.authenticate("local"), function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-    // So we're sending the user back the route to the members page because the redirect will happen on the front end
+    // So we're sending the user back the route to the home page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/members");
+    res.json("/home");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  // how we configured our Sequelize Fanatic Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", function(req, res) {
+  app.post("/api/signup", jsonParser, function(req, res) {
     console.log(req.body);
-    db.User_Name.create({
-      User_Name: req.body.User_Name,
+    db.Fanatic.create({
+      name: req.body.name,
       password: req.body.password
     }).then(function() {
       res.redirect(307, "/api/login");
@@ -42,14 +43,15 @@ module.exports = function(app) {
       res.json({});
     }
     else {
-      // Otherwise send back the user's user name and id
+      // Otherwise send back the user's name (and id?)
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        User_Name: req.User_Name,
-        id: req.User_Name.id
+        name: req.user.name
+        // ,id: req.user.id
       });
     }
   });
 
-};
 
+
+};
