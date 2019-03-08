@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "movie-book",
   "version": "1.0.0",
   "description": "Project 2 Starter",
@@ -35,3 +36,39 @@
     "prettier": "^1.13.7"
   }
 }
+=======
+    "name": "film_fanatic",
+    "version": "1.0.0",
+    "description": "movie reviews, logging, and movies you want to see",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DanielLott/movie-book.git"
+    },
+    "bugs": {
+        "url": "https://github.com/DanielLott/movie-book/issues"
+    },
+    "homepage": "https://github.com/DanielLott/movie-book#readme",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "watch": "nodemon server.js"
+    },
+    "keywords": [
+        "movie",
+        "movies"
+    ],
+    "author": "Carlos, Dan, Dylan, Rodnee",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt-nodejs": "*",
+        "body-parser": "*",
+        "express": "*",
+        "express-session": "*",
+        "mysql2": "*",
+        "passport": "*",
+        "passport-local": "*",
+        "sequelize": "*"
+    }
+}
+>>>>>>> c5e0e152d0e2b9b3918edf78bb2b1f2913956c8f

@@ -3,10 +3,10 @@ var authKey = '6ea54ebb5a72237bb912260532bd86c7';
 // holds results
 var resultsContainer;
 
-$(document).ready(function () {
-    $.get("/api/user_data").then(function(data) {
-        $("#user").append(data.User_Name);
-      });
+//$(document).ready(function () {
+    //$.get("/api/user_data").then(function(data) {
+        //$("#user").append(data.User_Name);
+      //});
 let resultsContainer = $(".resultsContainer");
 
 function runEventQuery(queryTerm) {
@@ -48,4 +48,11 @@ function runEventQuery(queryTerm) {
         });
 };
 runEventQuery();
+
+$(document).ready(function () {
+    // This file just does a GET request to figure out which fanatic is logged in
+    // and updates the HTML on the page
+    $.get("/api/user_data").then(function (data) {
+        $(".user-name").text(data.name);
+    });
 });
