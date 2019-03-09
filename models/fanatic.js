@@ -21,11 +21,10 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Fanatic.associate = function(models) {
-        // Associating Fanatic with Posts
-        // When an Fanatic is deleted, also delete any associated Posts
+        // Associating Fanatic with Movies
+        // When a Fanatic is deleted, also delete any associated Movies
         Fanatic.hasMany(models.Movie, {
           onDelete: "cascade",
-          as: 'seen'
         });
       };
 
