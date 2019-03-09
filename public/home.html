@@ -37,9 +37,13 @@
                         <a class="nav-link" id="my-movies" href="user.html" style="color:azure">My Movies</a>
                     </li>
 
-                    <!-- <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:azure">Movie Reviews</a>
-                </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout" href="/logout" style="color:azure">Logout</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color:azure">Movie Reviews</a>
+                    </li>
 
                     <li id="user"></li>
                 </ul>
@@ -84,7 +88,7 @@
         <!-- Javascript File-->
         <script src="js/home.js"></script>
         <script>
-        getUserInfoPromise().then(() => loadRecentMovies());        
+            getUserInfoPromise().then(() => loadRecentMovies());        
         </script>
     </body>
 
