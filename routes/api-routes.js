@@ -11,7 +11,7 @@ module.exports = function(app, jsonParser, urlencodedParser) {
     // So we're sending the user back the route to the home page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
     console.log(req.user.id);
-    res.json("/home/" + req.user.id);
+    res.json("/home");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -54,6 +54,33 @@ module.exports = function(app, jsonParser, urlencodedParser) {
   });
 
   // Route for adding movie to seen
+  app.post("/api/addMovie", jsonParser, function(req, res) {
+    console.log(req.body);
+    db.Movie.create(req.body).then(function() {
+      console.log("Added movie to DB");
+      //res.redirect(307, "/api/login");
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
 
+  app.get("/api/getMovies", jsonParser, function(req, res) {
+    var query = {};
+    console.log("Fetching movies ", req.query);
+    if (req.query.FanaticId) {
+      query.FanaticId = req.query.FanaticId;
+    }
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Author
+    db.Movie.findAll({
+      where: query
+    }).then(function(dbMovies) {
+      console.log("Returning movies" + dbMovies);
+      res.json(dbMovies);
+    });
+  });
 
 };

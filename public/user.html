@@ -16,7 +16,7 @@
     </head>
 
     <body>
-
+        <h2> Welcome <span id="username"></span></h2>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <a class="navbar-brand" href="#" style="color:azure">Film-Fanatic</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -32,9 +32,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="add-movie" href="add.html" style="color:azure">Add Movie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="my-movies" href="user.html" style="color:azure">My Movies</a>
                     </li>
 
                     <!-- <li class="nav-item">
@@ -84,7 +81,7 @@
         <!-- Javascript File-->
         <script src="js/home.js"></script>
         <script>
-        getUserInfoPromise().then(() => loadRecentMovies());        
+        getUserInfoPromise().then(() => loadMyMovies());
         </script>
     </body>
 
