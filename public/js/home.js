@@ -7,7 +7,7 @@ let resultsContainer = $(".resultsContainer");
 const queryURL = "https://api.themoviedb.org/3/movie/550?api_key=" + authKey;
 const queryURL2 = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + authKey + "&release_date.gte=2019-01-20&release_date.lte=2019-04-01&language=en-US&page=4";
 const queryURL3 = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + authKey + "&language=en-US&page=1&region=US";
-const queryURL4 = "http://api.themoviedb.org/3/discover/movie?api_key=" + authKey + "&sort_by=popularity.desc";
+const queryURL4 = "https://api.themoviedb.org/3/discover/movie?api_key=" + authKey + "&sort_by=popularity.desc";
 
 let userInfo;
 function getUserInfoPromise(){
