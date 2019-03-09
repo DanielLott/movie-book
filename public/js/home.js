@@ -4,11 +4,13 @@ var authKey = '6ea54ebb5a72237bb912260532bd86c7';
 var resultsContainer;
 
 $(document).ready(function () {
+    console.log('hello');
     $.get("/api/user_data").then(function(data) {
-        $("#user").append(data.User_Name);
+        $("#user").append(data.name);
+
+        console.log(data);
       });
 
-$(document).ready(function () {
     let resultsContainer = $(".resultsContainer");
 
 
@@ -62,13 +64,11 @@ $(document).ready(function () {
         });
 };
 
-$('#search').on('click', function (event) {
-    event.preventDefault();
-    let term = $('#userInput').val().trim();
-    console.log(term);
-});
+$("#addLink").on("click", function(req, res){
+    window.location(req.params)
+
+})
 
 
 runEventQuery();
-});
 });
