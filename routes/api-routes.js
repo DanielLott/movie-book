@@ -11,7 +11,8 @@ module.exports = function(app, jsonParser, urlencodedParser) {
     // So we're sending the user back the route to the home page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
     console.log(req.user.id);
-    res.json("/home/" + req.user.id);
+    res.json("/home");
+    // res.json("/home/" + req.user.id);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
