@@ -21,7 +21,7 @@ return $.get("/api/user_data").then( (res) => {
 
     function loadMyMovies(){
         
-        $.get("/api/getMovies?FanaticId="+2)//userInfo.id)
+        $.get("/api/getMovies?FanaticId=" + userInfo.id)
         .then( (result) => {
             console.log(result);
             result.forEach(movie => {
