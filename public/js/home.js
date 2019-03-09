@@ -40,7 +40,7 @@ return $.get("/api/user_data").then( (res) => {
             let randArray = [];
             randArray.push(Math.floor(Math.random() * 20));
 
-            while (randArray.length < 5) {
+            while (randArray.length < 20) {
                 let newRandom = Math.floor(Math.random() * 20);
 
                 if (randArray.includes(newRandom)) {
